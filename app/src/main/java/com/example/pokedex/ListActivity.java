@@ -1,5 +1,6 @@
 package com.example.pokedex;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,11 +15,14 @@ import com.example.pokedex.adapters.RecyclerViewAdapter;
 import com.example.pokedex.model.Pokemon;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+
 import org.json.JSONException;
 import org.json.JSONObject;
+//import org.json.simple.JSONArray;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import java.util.Iterator;
@@ -37,9 +41,11 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     ArrayList<String> types;
 
     ArrayList<Pokemon> dummyArrayList = new ArrayList<>();
-    Pokemon sample1 = new Pokemon("Name",123,1,1,"flavore",10, 15, 15, "Species", 3, 111, new String[]{"type1", "type2"});
+    Pokemon sample1 = new Pokemon("Name","001",1,1,"flavore",10, 15, 15, "Species", 3, 111, new String[]{"type1", "type2"});
+    Pokemon sample2 = new Pokemon("Name","123",1,1,"flavore",10, 15, 15, "Species", 3, 111, new String[]{"type1", "type2"});
+    Pokemon sample3 = new Pokemon("Name","222",1,1,"flavore",10, 15, 15, "Species", 3, 111, new String[]{"type1", "type2"});
 
-    ArrayList<Pokemon> pokemen;
+    ArrayList<Pokemon> pokemen = new ArrayList<>();
 
     RecyclerView recyclePokemon;
     RecyclerViewAdapter pokemonAdapter;
@@ -53,11 +59,14 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_list);
 
         dummyArrayList.add(sample1);
+        dummyArrayList.add(sample2);
+        dummyArrayList.add(sample3);
+        toPokemon1(getJson(), pokemen);
 
-        pokemonAdapter = new RecyclerViewAdapter(this, dummyArrayList);
+        pokemonAdapter = new RecyclerViewAdapter(this, pokemen);
         recyclePokemon = findViewById(R.id.recyclePokemon);
 
-        //toPokemon1(getJson(), pokemen);
+
         // Set the adapter for the recycler view.
         recyclePokemon.setAdapter(pokemonAdapter);
         recyclePokemon.setLayoutManager(new LinearLayoutManager(this));
@@ -128,9 +137,22 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
                 String key = keys.next();
                 if (jsonObject.get(key) instanceof JSONObject) {
                     Pokemon pokemon = new Pokemon();
-                    //System.out.println(key);
                     pokemon.setName(key);
-                    //System.out.println(pokemon);
+                    JSONObject obj = ((JSONObject) jsonObject.get(key));
+                    pokemon.setId(((String)obj.get("#")));
+                    pokemon.setImageUrl(((String)obj.get("#")));
+                    System.out.println("Image URL: "+pokemon.getImageUrl());
+                    pokemon.setAttack(Integer.parseInt((String)obj.get("Attack")));
+                    pokemon.setDefense(Integer.parseInt((String)obj.get("Defense")));
+                    pokemon.setHP(Integer.parseInt((String)obj.get("HP")));
+                    pokemon.setSpAtk(Integer.parseInt((String)obj.get("Sp. Atk")));
+                    pokemon.setSpDef(Integer.parseInt((String)obj.get("Sp. Def")));
+                    pokemon.setFlavorText((String)obj.get("FlavorText"));
+                    pokemon.setSpeed(Integer.parseInt((String)obj.get("Speed")));
+                    pokemon.setSpecies((String)obj.get("Species"));
+                    System.out.println((obj.get("Type")));
+                    //pokemon.setType(jsonArraytoString((JSONArray)obj.get("Type"),2));
+
                     pokemen.add(pokemon);
                 }
             }
@@ -142,4 +164,19 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         recyclePokemon.setLayoutManager(new LinearLayoutManager(this));
         recyclePokemon.setAdapter(myadapter);
     }
+    /*
+    private String[] jsonArraytoString(JSONArray jsonArray,int size) {
+        Iterator<String> iterator = jsonArray.iterator();
+        String[] list = new String[size];
+        int i = 0;
+        while(i<size) {
+            list[i] = iterator.next();
+            i += 1;
+        }
+        return list;
+
+    }
+
+     */
+
 }

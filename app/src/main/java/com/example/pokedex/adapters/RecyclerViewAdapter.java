@@ -41,11 +41,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.basic_row,parent,false);
-        System.out.println("created view holder");
-
+        View view = inflater.inflate(R.layout.pokemon_row_item,parent,false);
+        //System.out.println("created view holder");
         MyViewHolder viewHolder = new MyViewHolder(view);
-        System.out.println("should have called MyViewHolder(view)");
+        //System.out.println("should have called MyViewHolder(view)");
         return viewHolder;
 
     }
@@ -53,9 +52,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
 
-        System.out.println(position);
-        System.out.println(mData.get(position).getAttack());
-        System.out.println(holder.txtAttack);
+        //System.out.println(position);
+        //System.out.println(mData.get(position).getAttack());
+        //System.out.println(holder.txtAttack);
         holder.txtAttack.setText(Integer.toString(mData.get(position).getAttack()));
         //holder.txtAttackTitle.setText(mData.get(position).getAttack());
         holder.txtDefense.setText(Integer.toString(mData.get(position).getDefense()));
@@ -99,8 +98,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            System.out.println("instantiating TextViews");
-            System.out.println(itemView.findViewById(R.id.txtAttack));
+            //System.out.println("instantiating TextViews");
+            //System.out.println(itemView.findViewById(R.id.txtAttack));
+
             txtAttack = itemView.findViewById(R.id.txtAttack);
             txtDefense = itemView.findViewById(R.id.txtDefense);
             txtAttackTitle = itemView.findViewById(R.id.txtAttTitle);
@@ -109,7 +109,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             txtHPTitle = itemView.findViewById(R.id.txtHPTitle);
             txtSpecies = itemView.findViewById(R.id.txtSpecies);
             txtSpeciesTitle = itemView.findViewById(R.id.txtSpeciesTitle);
-
             txtName = itemView.findViewById(R.id.txtName);
             txtType1 = itemView.findViewById(R.id.txtType1);
             txtType2 = itemView.findViewById(R.id.txtType2);

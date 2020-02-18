@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Pokemon {
     private String name;
-    private int id;
+    private String id;
     private int Attack;
     private int Defense;
     private String FlavorText;
@@ -20,7 +20,7 @@ public class Pokemon {
     public Pokemon() {
     }
 
-    public Pokemon(String name, int id, int attack, int defense, String flavorText, int HP, int spAtk, int spDef, String species, int speed, int total, String[] type) {
+    public Pokemon(String name, String id, int attack, int defense, String flavorText, int HP, int spAtk, int spDef, String species, int speed, int total, String[] type) {
         this.name = name;
         this.id = id;
         Attack = attack;
@@ -59,7 +59,7 @@ public class Pokemon {
         return name;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -104,13 +104,15 @@ public class Pokemon {
     }
 
     public String getType1() {
-        return Type[0];
+        if(Type != null)
+            return Type[0];
+        return "no type";
     }
 
     public String getType2() {
-        if(Type.length>1)
+        if(Type != null && Type.length>1)
             return Type[1];
-        return "";
+        return "no type 2";
     }
 
 
@@ -122,7 +124,7 @@ public class Pokemon {
         this.name = name;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -165,10 +167,8 @@ public class Pokemon {
     public void setType(String[] type) {
         Type = type;
     }
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-    public void setImageUrl(int id) {
+
+    public void setImageUrl(String id) {
         this.imageUrl = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/"+id+".png";
     }
 
