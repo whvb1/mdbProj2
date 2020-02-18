@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnSteel = findViewById(R.id.btnSteel);
         btnFairy = findViewById(R.id.btnFairy);
 
-                txtTypes.setText("");
+        txtTypes.setText("");
         imgbtnStart.setOnClickListener(this);
         btnNormal.setOnClickListener(this);
         btnFire.setOnClickListener(this);
