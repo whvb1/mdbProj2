@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btnFighting"
+        android:layout_width="64dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="115dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/fighting"
+        android:text="fighting"
+        android:textColor="@android:color/white"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnFairy" />
+
+    <Button
+        android:id="@+id/btnRock"
+        android:layout_width="64dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/rock"
+        android:text="rock"
+        android:textColor="@android:color/white"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@+id/btnFighting"
+        app:layout_constraintTop_toBottomOf="@+id/btnDark" />
+
+    <Button
+        android:id="@+id/btnFairy"
+        android:layout_width="64dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/fairy"
+        android:text="fairy"
+        android:textColor="@android:color/white"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@+id/btnSteel"
+        app:layout_constraintTop_toBottomOf="@+id/btnGhost" />
+
+    <Button
+        android:id="@+id/btnDragon"
+        android:layout_width="64dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/dragon"
+        android:text="dragon"
+        android:textColor="@android:color/white"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@+id/btnDark"
+        app:layout_constraintTop_toBottomOf="@+id/btnGhost" />
+
+    <Button
+        android:id="@+id/btnDark"
+        android:layout_width="64dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/dark"
+        android:text="dark"
+        android:textColor="@android:color/white"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@+id/btnFairy"
+        app:layout_constraintTop_toBottomOf="@+id/btnFlying" />
+
+    <Button
+        android:id="@+id/btnSteel"
+        android:layout_width="64dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/steel"
+        android:text="steel"
+        android:textColor="@android:color/white"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBug" />
+
+    <Button
+        android:id="@+id/btnFire"
+        android:layout_width="64dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/fire"
+        android:text="fire"
+        android:textColor="@android:color/white"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@+id/btnNormal"
+        app:layout_constraintTop_toBottomOf="@+id/imgbtnStart" />
+
+    <Button
+        android:id="@+id/btnNormal"
+        android:layout_width="64dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/normal"
+        android:text="normal"
+        android:textColor="@android:color/white"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgbtnStart" />
+
+    <Button
+        android:id="@+id/btnWater"
+        android:layout_width="64dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/water"
+        android:text="water"
+        android:textColor="@android:color/white"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@+id/btnFire"
+        app:layout_constraintTop_toBottomOf="@+id/imgbtnStart" />
+
+    <Button
+        android:id="@+id/btnElectric"
+        android:layout_width="64dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/electric"
+        android:text="electric"
+        android:textColor="@android:color/white"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@+id/btnWater"
+        app:layout_constraintTop_toBottomOf="@+id/imgbtnStart" />
+
+    <Button
+        android:id="@+id/btnGrass"
+        android:layout_width="64dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/grass"
+        android:text="grass"
+        android:textColor="@android:color/white"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnNormal" />
+
+    <Button
+        android:id="@+id/btnIce"
+        android:layout_width="64dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/ice"
+        android:text="ice"
+        android:textColor="@android:color/white"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@+id/btnGrass"
+        app:layout_constraintTop_toBottomOf="@+id/btnFire" />
+
+    <Button
+        android:id="@+id/btnPoison"
+        android:layout_width="64dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/poison"
+        android:text="poison"
+        android:textColor="@android:color/white"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@+id/btnGround"
+        app:layout_constraintTop_toBottomOf="@+id/btnElectric" />
+
+    <Button
+        android:id="@+id/btnGround"
+        android:layout_width="64dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/ground"
+        android:text="ground"
+        android:textColor="@android:color/white"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@+id/btnIce"
+        app:layout_constraintTop_toBottomOf="@+id/btnWater" />
+
+    <Button
+        android:id="@+id/btnFlying"
+        android:layout_width="64dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/flying"
+        android:text="flying"
+        android:textColor="@android:color/white"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@+id/btnPsychic"
+        app:layout_constraintTop_toBottomOf="@+id/btnGround" />
+
+    <Button
+        android:id="@+id/btnPsychic"
+        android:layout_width="64dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/psychic"
+        android:text="psychic"
+        android:textColor="@android:color/white"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@+id/btnBug"
+        app:layout_constraintTop_toBottomOf="@+id/btnIce" />
+
+    <Button
+        android:id="@+id/btnBug"
+        android:layout_width="64dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/bug"
+        android:text="bug"
+        android:textColor="@android:color/white"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGrass" />
+
+    <Button
+        android:id="@+id/btnGhost"
+        android:layout_width="64dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/ghost"
+        android:text="ghost"
+        android:textColor="@android:color/white"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@+id/btnFlying"
+        app:layout_constraintTop_toBottomOf="@+id/btnPoison" />
+
+    <ImageButton
+        android:id="@+id/imgbtnStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.26"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <TextView
+        android:id="@+id/txtTypes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="TYPES"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
