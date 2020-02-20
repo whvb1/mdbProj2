@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     EditText txtMinAtk;
     EditText txtMinDef;
+    EditText txtName;
 
     //Button[] btnTypes = new Button[]{btnNormal, btnFire, btnWater, btnElectric, btnGrass, btnIce, btnFighting, btnPoison, btnGround, btnFlying, btnBug, btnPsychic, btnRock, btnGhost, btnDragon, btnDark, btnSteel, btnFairy};
 
@@ -92,6 +93,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         imgbtnStart = findViewById(R.id.imgbtnStart);
         txtTypes = findViewById(R.id.txtTypes);
+        txtMinAtk = findViewById(R.id.txtMinAtk);
+        txtMinDef = findViewById(R.id.txtMinDef);
+        txtName = findViewById(R.id.txtName);
 
         btnNormal = findViewById(R.id.btnNormal);
         btnFire = findViewById(R.id.btnFire);
@@ -111,8 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnDark = findViewById(R.id.btnDark);
         btnSteel = findViewById(R.id.btnSteel);
         btnFairy = findViewById(R.id.btnFairy);
-        txtMinAtk = findViewById(R.id.txtMinAtk);
-        txtMinDef = findViewById(R.id.txtMinDef);
+
 
         txtTypes.setText("");
         imgbtnStart.setOnClickListener(this);
@@ -153,10 +156,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.imgbtnStart:
                 Intent startIntent = new Intent(this, ListActivity.class);
                 startIntent.putExtra("types",types);
-                minAtk = Integer.parseInt(txtMinAtk.getText().toString());
-                minDef = Integer.parseInt(txtMinDef.getText().toString());
+                minAtk = Integer.parseInt(("0"+txtMinAtk.getText()));
+                minDef = Integer.parseInt("0"+txtMinDef.getText());
                 startIntent.putExtra("minAtk",minAtk);
                 startIntent.putExtra("minDef",minDef);
+                startIntent.putExtra("name","0"+txtName.getText());
                 this.startActivity(startIntent);
                 break;
             case R.id.btnNormal:

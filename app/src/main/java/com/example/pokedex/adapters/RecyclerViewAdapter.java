@@ -1,10 +1,14 @@
 package com.example.pokedex.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.pokedex.InfoActivity;
 import com.example.pokedex.R;
 import com.example.pokedex.model.Pokemon;
 
@@ -53,7 +58,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
         //System.out.println(position);
         //System.out.println(mData.get(position).getAttack());
@@ -66,6 +71,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.txtName.setText(mData.get(position).getName());
         holder.txtType1.setText(mData.get(position).getType1());
         holder.txtType2.setText(mData.get(position).getType2());
+        holder.btnInfo.setOnClickListener(new View.OnClickListener() {
+                                              @Override
+                                              public void onClick(View v) {
+                                                  Intent info = new Intent(holder.itemView.getContext(), InfoActivity.class);
+                                                  info.putExtra("id",mData.get(position).getId());
+                                                  info.putExtra("info",mData.get(position).toString());
+                                                  holder.itemView.getContext().startActivity(info);
+                                              }
+                                          });
+
         //holder.txtType1.setBackgroundTintList(R.color.);
 
 
@@ -92,10 +107,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView txtHPTitle;
         TextView txtSpecies;
         TextView txtSpeciesTitle;
-
         TextView txtName;
         TextView txtType1;
         TextView txtType2;
+
+        ImageButton btnInfo;
 
 
         ImageView imgThumbnail;
@@ -118,6 +134,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             txtType1 = itemView.findViewById(R.id.txtType1);
             txtType2 = itemView.findViewById(R.id.txtType2);
 
+            btnInfo = itemView.findViewById(R.id.btnInfo);
             imgThumbnail = itemView.findViewById(R.id.imgThumbnail);
 
         }

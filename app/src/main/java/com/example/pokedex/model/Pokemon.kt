@@ -45,21 +45,40 @@ class Pokemon {
     }
 
     override fun toString(): String {
-        return "Pokemon{" +
-                "name='" + name + '\''.toString() +
-                ", id=" + id +
-                ", Attack=" + attack +
-                ", Defense=" + defense +
-                ", FlavorText='" + flavorText + '\''.toString() +
-                ", HP=" + hp +
-                ", spAtk=" + spAtk +
-                ", spDef=" + spDef +
-                ", Species='" + species + '\''.toString() +
-                ", Speed=" + speed +
-                ", Total=" + total +
-                ", Type=" + type +
-                ", imageUrl='" + imageUrl + '\''.toString() +
-                '}'.toString()
+        return  "Name: '" + name + '\''.toString() +
+                "\n ID: " + id +
+                "\n Attack: " + attack +
+                "\n Defense: " + defense +
+                "\n FlavorText: " + flavorText +
+                "\n HP: " + hp +
+                "\n Special Atk: " + spAtk +
+                "\n Special Def: " + spDef +
+                "\n Species: " + species +
+                "\n Speed: " + speed +
+                "\n Total: " + total +
+                "\n Primary Type: " + type1 +
+                "\n Secondary Type: " + type2
+
+    }
+
+    fun toStringArr(): ArrayList<String?> {
+        var list: ArrayList<String?> = ArrayList<String?>()
+        list.add(name)
+        list.add(id)
+        list.add(attack.toString())
+        list.add(defense.toString())
+        list.add(flavorText)
+        list.add(hp.toString())
+        list.add(spAtk.toString())
+        list.add(spDef.toString())
+        list.add(species)
+        list.add(speed.toString())
+        list.add(total.toString())
+        list.add(type1)
+        list.add(type2)
+        list.add(imageUrl)
+
+        return list
     }
 
 

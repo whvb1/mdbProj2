@@ -46,6 +46,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     String type_two;
     String none_type = "none";
     ArrayList<String> types;
+    String name_filter;
 
     boolean isProductViewAsList = true;
 
@@ -76,6 +77,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         types = getIntent().getStringArrayListExtra("types");
         minAtk = (int)getIntent().getIntExtra("minAtk",0);
         minDef = (int)getIntent().getIntExtra("minDef",0);
+        name_filter = getIntent().getStringExtra("name");
 
         System.out.println(types.size());
         if(types.size()>1) {
@@ -204,20 +206,36 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     private void addToPokemen(Pokemon pokemon) {
         String type1 = pokemon.getType1().toLowerCase();
         String type2 = pokemon.getType2().toLowerCase();
+        String name = pokemon.getName();
         type_one = type_one.toLowerCase();
         type_two = type_two.toLowerCase();
-        System.out.println(String.format("type_one: %s; type1: %s; type2: %s",type_one,type1,type2));
-        System.out.println(type_one.equals(type1) || type_one.equals("none") || type_one.equals(type2));
+        //System.out.println(String.format("type_one: %s; type1: %s; type2: %s",type_one,type1,type2));
+        //System.out.println(type_one.equals(type1) || type_one.equals("none") || type_one.equals(type2));
         boolean type1test = (type_one.equals(type1) || type_one.equals("none") || type_one.equals(type2));
         boolean type2test = (type_two.equals(type2) || type_two.equals("none") || type_two.equals(type1));
-        System.out.println(String.format("Min: %d; Attack: %d",minAtk,pokemon.getAttack()));
-        System.out.println(minAtk < pokemon.getAttack());
+        //System.out.println(String.format("Min: %d; Attack: %d",minAtk,pokemon.getAttack()));
+        //System.out.println(minAtk < pokemon.getAttack());
         boolean atktest = minAtk < pokemon.getAttack();
         boolean deftest = minDef < pokemon.getDefense();
+        System.out.println(name+" || "+name_filter.substring(1));
+        boolean nameTest = name.toLowerCase().contains(name_filter.substring(1).toLowerCase());
+
+        if(name.contains("( Mega")) {
+            int nameEnd = name.length();
+            for (int i = 0; i < name.length(); i += 1) {
+                if (name.charAt(i) == '(') {
+                    nameEnd = i;
+                }
+            }
+            pokemon.setName(name.substring(0, nameEnd) + "(Mega)");
+
+        }
 
 
 
-        if(type1test && type2test && atktest && deftest) {
+
+
+        if(type1test && type2test && atktest && deftest && nameTest) {
             System.out.println("Adding Pokemon -----------------");
             pokemen.add(pokemon);
         }
