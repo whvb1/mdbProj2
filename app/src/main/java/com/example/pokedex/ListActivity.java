@@ -2,7 +2,7 @@ package com.example.pokedex;
 
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -33,6 +33,8 @@ import java.util.ArrayList;
 
 import java.util.Iterator;
 
+import static com.example.pokedex.adapters.RecyclerViewAdapter.SPAN_COUNT_ONE;
+import static com.example.pokedex.adapters.RecyclerViewAdapter.SPAN_COUNT_THREE;
 
 public class ListActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -59,9 +61,12 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
 
     RecyclerView recyclePokemon;
     RecyclerViewAdapter pokemonAdapter;
+    private GridLayoutManager gridLayoutManager;
 
     int minAtk;
     int minDef;
+
+
 
 
 
@@ -70,37 +75,20 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-
-        //dummyArrayList.add(sample1);
-        //dummyArrayList.add(sample2);
-        //dummyArrayList.add(sample3);
+        //importing stuff from filter
         types = getIntent().getStringArrayListExtra("types");
         minAtk = (int)getIntent().getIntExtra("minAtk",0);
         minDef = (int)getIntent().getIntExtra("minDef",0);
         name_filter = getIntent().getStringExtra("name");
+        parseTypes();
 
-        System.out.println(types.size());
-        if(types.size()>1) {
-            type_two = types.get(1);
-            type_one = types.get(0);
-        } else if (types.size() == 1) {
-            type_one = types.get(0);
-            type_two = none_type;
-        } else {
-            System.out.println("no types selected");
-            type_one = none_type;
-            type_two = none_type;
-            System.out.println(String.format("type_one: %s; type_two: %s",type_one,type_two));
-        }
         toPokemon1(getJson(), pokemen);
-
-        pokemonAdapter = new RecyclerViewAdapter(this, pokemen);
-        recyclePokemon = findViewById(R.id.recyclePokemon);
-
-
         // Set the adapter for the recycler view.
+        gridLayoutManager = new GridLayoutManager(this, SPAN_COUNT_ONE);
+        pokemonAdapter = new RecyclerViewAdapter(this, pokemen, gridLayoutManager);
+        recyclePokemon = findViewById(R.id.recyclePokemon);
         recyclePokemon.setAdapter(pokemonAdapter);
-        recyclePokemon.setLayoutManager(new LinearLayoutManager(this));
+        recyclePokemon.setLayoutManager(gridLayoutManager);
         // Set the layout of the recycler manager. This will determine how the
         // rows will be displayed. LinearLayout will set them to be vertically
         // linear (i.e one after the other, on top of each other).
@@ -127,10 +115,12 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
                 if(txtInfo.getText() == toGrid) {
                     System.out.println("calling self-made replace on GRID");
                     txtInfo.setText(toList);
+                    switchLayout();
                 }else{
                     System.out.println("calling self-made replace on ArrayList");
                     //replaceFragment(new pokemenArrayList());
                     txtInfo.setText(toGrid);
+                    switchLayout();
                 }
                 break;
             default:
@@ -198,11 +188,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         } catch (JSONException e) {
         }
     }
-    private void setuprecycler(ArrayList<Pokemon> lstPok) {
-        RecyclerViewAdapter myadapter = new RecyclerViewAdapter(this,lstPok);
-        recyclePokemon.setLayoutManager(new LinearLayoutManager(this));
-        recyclePokemon.setAdapter(myadapter);
-    }
+
     private void addToPokemen(Pokemon pokemon) {
         String type1 = pokemon.getType1().toLowerCase();
         String type2 = pokemon.getType2().toLowerCase();
@@ -230,16 +216,34 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
             pokemon.setName(name.substring(0, nameEnd) + "(Mega)");
 
         }
-
-
-
-
-
         if(type1test && type2test && atktest && deftest && nameTest) {
             System.out.println("Adding Pokemon -----------------");
             pokemen.add(pokemon);
         }
+    }
 
+    private void switchLayout() {
+        if(gridLayoutManager.getSpanCount() == SPAN_COUNT_ONE) {
+            gridLayoutManager.setSpanCount(SPAN_COUNT_THREE);
+        } else {
+            gridLayoutManager.setSpanCount(SPAN_COUNT_ONE);
+        }
+        pokemonAdapter.notifyItemRangeChanged(0,pokemonAdapter.getItemCount());
+    }
+
+    private void parseTypes() {
+        if(types.size()>1) {
+            type_two = types.get(1);
+            type_one = types.get(0);
+        } else if (types.size() == 1) {
+            type_one = types.get(0);
+            type_two = none_type;
+        } else {
+            System.out.println("no types selected");
+            type_one = none_type;
+            type_two = none_type;
+            System.out.println(String.format("type_one: %s; type_two: %s",type_one,type_two));
+        }
     }
 
 
