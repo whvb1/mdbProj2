@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -48,16 +49,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnSteel;
     Button btnFairy;
 
+    EditText txtMinAtk;
+    EditText txtMinDef;
+
     //Button[] btnTypes = new Button[]{btnNormal, btnFire, btnWater, btnElectric, btnGrass, btnIce, btnFighting, btnPoison, btnGround, btnFlying, btnBug, btnPsychic, btnRock, btnGhost, btnDragon, btnDark, btnSteel, btnFairy};
 
 
     boolean normal = false;
     boolean fire = false;
     boolean water = false;
+    boolean electric = false;
+    boolean grass = false;
+    boolean ice = false;
+    boolean fighting = false;
+    boolean poison = false;
+    boolean ground = false;
+    boolean flying  = false;
+    boolean psychic = false;
+    boolean bug  = false;
+    boolean rock = false;
+    boolean ghost = false;
+    boolean dragon  = false;
+    boolean dark = false;
+    boolean steel = false;
+    boolean fairy = false;
 
 
     ArrayList<String> types = new ArrayList<>();
     ArrayList<Pokemon> pokemen = new ArrayList<>();
+    int minAtk = 0;
+    int minDef = 0;
 
 
 
@@ -90,6 +111,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnDark = findViewById(R.id.btnDark);
         btnSteel = findViewById(R.id.btnSteel);
         btnFairy = findViewById(R.id.btnFairy);
+        txtMinAtk = findViewById(R.id.txtMinAtk);
+        txtMinDef = findViewById(R.id.txtMinDef);
 
         txtTypes.setText("");
         imgbtnStart.setOnClickListener(this);
@@ -120,6 +143,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+
+
     }
 
     @Override
@@ -128,6 +153,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.imgbtnStart:
                 Intent startIntent = new Intent(this, ListActivity.class);
                 startIntent.putExtra("types",types);
+                minAtk = Integer.parseInt(txtMinAtk.getText().toString());
+                minDef = Integer.parseInt(txtMinDef.getText().toString());
+                startIntent.putExtra("minAtk",minAtk);
+                startIntent.putExtra("minDef",minDef);
                 this.startActivity(startIntent);
                 break;
             case R.id.btnNormal:
@@ -161,6 +190,156 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else if(types.size()<2) {
                     water = true;
                     types.add("water");
+                }
+                break;
+            case R.id.btnElectric:
+                if(electric){
+                    removeStr("electric");
+                    electric = false;
+                }
+                else if(types.size()<2) {
+                    electric = true;
+                    types.add("electric");
+                }
+                break;
+            case R.id.btnGrass:
+                if(grass){
+                    removeStr("grass");
+                    grass = false;
+                }
+                else if(types.size()<2) {
+                    grass = true;
+                    types.add("grass");
+                }
+                break;
+            case R.id.btnIce:
+                if(ice){
+                    removeStr("ice");
+                    ice = false;
+                }
+                else if(types.size()<2) {
+                    ice = true;
+                    types.add("ice");
+                }
+                break;
+            case R.id.btnFighting:
+                if(fighting){
+                    removeStr("fighting");
+                    fighting = false;
+                }
+                else if(types.size()<2) {
+                    fighting = true;
+                    types.add("fighting");
+                }
+                break;
+            case R.id.btnPoison:
+                if(poison){
+                    removeStr("poison");
+                    poison = false;
+                }
+                else if(types.size()<2) {
+                    poison = true;
+                    types.add("poison");
+                }
+                break;
+            case R.id.btnGround:
+                if(ground){
+                    removeStr("ground");
+                    ground = false;
+                }
+                else if(types.size()<2) {
+                    ground = true;
+                    types.add("ground");
+                }
+                break;
+            case R.id.btnFlying:
+                if(flying){
+                    removeStr("flying");
+                    flying = false;
+                }
+                else if(types.size()<2) {
+                    flying = true;
+                    types.add("flying");
+                }
+                break;
+            case R.id.btnPsychic:
+                if(electric){
+                    removeStr("psychic");
+                    psychic = false;
+                }
+                else if(types.size()<2) {
+                    psychic = true;
+                    types.add("psychic");
+                }
+                break;
+            case R.id.btnBug:
+                if(bug){
+                    removeStr("bug");
+                    bug = false;
+                }
+                else if(types.size()<2) {
+                    bug = true;
+                    types.add("bug");
+                }
+                break;
+            case R.id.btnRock:
+                if(rock){
+                    removeStr("rock");
+                    rock = false;
+                }
+                else if(types.size()<2) {
+                    rock = true;
+                    types.add("rock");
+                }
+                break;
+            case R.id.btnGhost:
+                if(ghost){
+                    removeStr("ghost");
+                    ghost = false;
+                }
+                else if(types.size()<2) {
+                    ghost = true;
+                    types.add("ghost");
+                }
+                break;
+            case R.id.btnDragon:
+                if(dragon){
+                    removeStr("dragon");
+                    dragon = false;
+                }
+                else if(types.size()<2) {
+                    dragon = true;
+                    types.add("dragon");
+                }
+                break;
+            case R.id.btnDark:
+                if(dark){
+                    removeStr("dark");
+                    dark = false;
+                }
+                else if(types.size()<2) {
+                    dark = true;
+                    types.add("dark");
+                }
+                break;
+            case R.id.btnSteel:
+                if(steel){
+                    removeStr("steel");
+                    steel = false;
+                }
+                else if(types.size()<2) {
+                    steel = true;
+                    types.add("steel");
+                }
+                break;
+            case R.id.btnFairy:
+                if(fairy){
+                    removeStr("fairy");
+                    fairy = false;
+                }
+                else if(types.size()<2) {
+                    fairy = true;
+                    types.add("fair");
                 }
                 break;
 

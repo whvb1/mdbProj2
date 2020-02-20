@@ -39,6 +39,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public RecyclerViewAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
+        //TODO: grid layout manager
+        //View v = LayoutInflater.from(parent.getContext()).inflate(isProductViewAsList ? R.layout.product_row_layout_list : R.layout.product_row_layout_grid, null);
+
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.pokemon_row_item,parent,false);
@@ -58,13 +61,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.txtAttack.setText(Integer.toString(mData.get(position).getAttack()));
         //holder.txtAttackTitle.setText(mData.get(position).getAttack());
         holder.txtDefense.setText(Integer.toString(mData.get(position).getDefense()));
-        holder.txtHP.setText(Integer.toString(mData.get(position).getHP()));
+        holder.txtHP.setText(Integer.toString(mData.get(position).getHp()));
         holder.txtSpecies.setText(mData.get(position).getSpecies());
         holder.txtName.setText(mData.get(position).getName());
         holder.txtType1.setText(mData.get(position).getType1());
         holder.txtType2.setText(mData.get(position).getType2());
+        //holder.txtType1.setBackgroundTintList(R.color.);
 
-        Glide.with(mContext).load(mData.get(position).getImageUrl()).apply(option).into(holder.imgThumbnail);
+
+        Glide.with(mContext).load(String.format("https://assets.pokemon.com/assets/cms2/img/pokedex/detail/%s.png", mData.get(position).getId())).apply(option).into(holder.imgThumbnail);
 
 
     }
