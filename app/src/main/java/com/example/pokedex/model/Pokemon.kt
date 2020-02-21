@@ -45,7 +45,7 @@ class Pokemon {
     }
 
     override fun toString(): String {
-        return  "Name: '" + name + '\''.toString() +
+        return  "Name: " + name +
                 "\n ID: " + id +
                 "\n Attack: " + attack +
                 "\n Defense: " + defense +

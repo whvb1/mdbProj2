@@ -8,20 +8,14 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.pokedex.InfoActivity;
 import com.example.pokedex.R;
 import com.example.pokedex.model.Pokemon;
-
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
-
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>{
 
@@ -86,14 +80,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.btnInfo.setOnClickListener(new View.OnClickListener() {
                                               @Override
                                               public void onClick(View v) {
+                                                  System.out.println("sending intent data");
                                                   Intent info = new Intent(holder.itemView.getContext(), InfoActivity.class);
                                                   info.putExtra("id",mData.get(position).getId());
                                                   info.putExtra("info",mData.get(position).toString());
+                                                  info.putExtra("name",mData.get(position).getName());
                                                   holder.itemView.getContext().startActivity(info);
                                               }
                                           });
-
-        //holder.txtType1.setBackgroundTintList(R.color.);
         Glide.with(mContext).load(String.format("https://assets.pokemon.com/assets/cms2/img/pokedex/detail/%s.png", mData.get(position).getId())).apply(option).into(holder.imgThumbnail);
 
 
@@ -127,8 +121,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         public MyViewHolder(View itemView, int viewType) {
             super(itemView);
-            //System.out.println("instantiating TextViews");
-            //System.out.println(itemView.findViewById(R.id.txtAttack));
             if (viewType == VIEW_TYPE_BIG) {
                 txtAttack = itemView.findViewById(R.id.txtAttack);
                 txtDefense = itemView.findViewById(R.id.txtDefense);

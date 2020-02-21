@@ -51,25 +51,14 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     String name_filter;
 
     boolean isProductViewAsList = true;
-
-    ArrayList<Pokemon> dummyArrayList = new ArrayList<>();
-    //Pokemon sample1 = new Pokemon("Name","001",1,1,"flavore",10, 15, 15, "Species", 3, 111, new String[]{"type1", "type2"});
-    //Pokemon sample2 = new Pokemon("Name","123",1,1,"flavore",10, 15, 15, "Species", 3, 111, new String[]{"type1", "type2"});
-    //Pokemon sample3 = new Pokemon("Name","222",1,1,"flavore",10, 15, 15, "Species", 3, 111, new String[]{"type1", "type2"});
+    int minAtk;
+    int minDef;
 
     ArrayList<Pokemon> pokemen = new ArrayList<>();
 
     RecyclerView recyclePokemon;
     RecyclerViewAdapter pokemonAdapter;
     private GridLayoutManager gridLayoutManager;
-
-    int minAtk;
-    int minDef;
-
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +70,6 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         minDef = (int)getIntent().getIntExtra("minDef",0);
         name_filter = getIntent().getStringExtra("name");
         parseTypes();
-
         toPokemon1(getJson(), pokemen);
         // Set the adapter for the recycler view.
         gridLayoutManager = new GridLayoutManager(this, SPAN_COUNT_ONE);
@@ -92,8 +80,6 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         // Set the layout of the recycler manager. This will determine how the
         // rows will be displayed. LinearLayout will set them to be vertically
         // linear (i.e one after the other, on top of each other).
-
-
         btnSearch = findViewById(R.id.btnSearch);
         flbtnSwitch = findViewById(R.id.flbtnSwitch);
         flbtnSwitch.setOnClickListener(this);
@@ -113,13 +99,10 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.flbtnSwitch:
                 if(txtInfo.getText() == toGrid) {
-                    System.out.println("calling self-made replace on GRID");
-                    txtInfo.setText(toList);
+                    flbtnSwitch.setImageDrawable(getDrawable(R.drawable.grid));
                     switchLayout();
                 }else{
-                    System.out.println("calling self-made replace on ArrayList");
-                    //replaceFragment(new pokemenArrayList());
-                    txtInfo.setText(toGrid);
+                    flbtnSwitch.setImageDrawable(getDrawable(R.drawable.list));
                     switchLayout();
                 }
                 break;
@@ -245,32 +228,4 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
             System.out.println(String.format("type_one: %s; type_two: %s",type_one,type_two));
         }
     }
-
-
-    /*
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-
-        final MenuItem searchItem = menu.findItem(R.id.action_search);
-        final SearchView searchView = (SearchView) searchItem.getActionView();
-        searchView.setOnQueryTextListener(this);
-
-        return true;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String query) {
-        // Here is where we are going to implement the filter logic
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-        return false;
-    }
-
-     */
-
 }

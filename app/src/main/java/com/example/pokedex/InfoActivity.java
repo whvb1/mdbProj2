@@ -47,6 +47,7 @@ public class InfoActivity extends AppCompatActivity implements View.OnClickListe
         Glide.with(this).load(String.format("https://assets.pokemon.com/assets/cms2/img/pokedex/detail/%s.png", id)).apply(option).into(imgInfo);
 
         btnWeb.setOnClickListener(this);
+        System.out.println(name);
 
     }
 
@@ -55,6 +56,7 @@ public class InfoActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnWeb:
+
                 Uri webpage = Uri.parse(String.format("https://www.pokemon.com/us/pokedex/%s",first_name(name)));
                 Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
                 this.startActivity(webIntent);
@@ -69,12 +71,17 @@ public class InfoActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private String first_name(String name) {
-            int nameEnd = name.length();
+        System.out.println(name);
+        int nameEnd = 0;
+        if(name != null) {
+            nameEnd = name.length();
             for (int i = 0; i < name.length(); i += 1) {
                 if (name.charAt(i) == '(') {
                     nameEnd = i;
                 }
             }
-            return name.substring(0, nameEnd).toLowerCase();
+
+        }
+        return name.substring(0, nameEnd).toLowerCase();
     }
 }
