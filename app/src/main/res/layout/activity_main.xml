@@ -244,13 +244,14 @@
         android:id="@+id/imgbtnStart"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:background="@android:color/transparent"
+        android:background="@drawable/big_circle"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.26"
+        tools:src="@drawable/pokeball"
         tools:srcCompat="@drawable/pokeball" />
 
     <TextView
