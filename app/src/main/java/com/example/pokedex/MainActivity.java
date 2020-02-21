@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         imgbtnStart = findViewById(R.id.imgbtnStart);
+
         txtTypes = findViewById(R.id.txtTypes);
         txtMinAtk = findViewById(R.id.txtMinAtk);
         txtMinDef = findViewById(R.id.txtMinDef);
