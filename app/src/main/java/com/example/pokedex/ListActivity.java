@@ -35,6 +35,7 @@ import java.util.Iterator;
 
 import static com.example.pokedex.adapters.RecyclerViewAdapter.SPAN_COUNT_ONE;
 import static com.example.pokedex.adapters.RecyclerViewAdapter.SPAN_COUNT_THREE;
+import static com.example.pokedex.adapters.RecyclerViewAdapter.VIEW_TYPE_BIG;
 
 public class ListActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -85,6 +86,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         flbtnSwitch.setOnClickListener(this);
         btnSearch.setOnClickListener(this);
         txtInfo = findViewById(R.id.txtInfo);
+        flbtnSwitch.setImageResource((R.drawable.grid));
         //getting data from search
 
     }
@@ -98,13 +100,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
                 this.startActivity(startIntent);
                 break;
             case R.id.flbtnSwitch:
-                if(txtInfo.getText() == toGrid) {
-                    flbtnSwitch.setImageDrawable(getDrawable(R.drawable.grid));
-                    switchLayout();
-                }else{
-                    flbtnSwitch.setImageDrawable(getDrawable(R.drawable.list));
-                    switchLayout();
-                }
+                switchLayout();
                 break;
             default:
                 break;
@@ -207,8 +203,10 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
 
     private void switchLayout() {
         if(gridLayoutManager.getSpanCount() == SPAN_COUNT_ONE) {
+            flbtnSwitch.setImageResource((R.drawable.list));
             gridLayoutManager.setSpanCount(SPAN_COUNT_THREE);
         } else {
+            flbtnSwitch.setImageResource((R.drawable.grid));
             gridLayoutManager.setSpanCount(SPAN_COUNT_ONE);
         }
         pokemonAdapter.notifyItemRangeChanged(0,pokemonAdapter.getItemCount());
